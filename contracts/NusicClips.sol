@@ -34,8 +34,8 @@ contract NusicClips is ERC721, Pausable, Ownable, ERC2981, ReentrancyGuard {
     address public manager;
     address public treasuryAddress;
 
-    event PublicSaleMinted(address sender, address indexed to, uint256 tokenId);
-    event ReserveTokenMinted(address sender, address indexed to, uint256 tokenId);
+    event PublicSaleMinted(address sender, address indexed to, string uuid, uint256 tokenId);
+    event ReserveTokenMinted(address sender, address indexed to, string uuid, uint256 tokenId);
 
     modifier onlyOwnerOrManager() {
         require((owner() == msg.sender) || (manager == msg.sender), "Caller needs to be Owner or Manager");
@@ -89,26 +89,28 @@ contract NusicClips is ERC721, Pausable, Ownable, ERC2981, ReentrancyGuard {
         return bytes(_tokenURI).length > 0 ? _tokenURI : defaultURI;
     }
 
-    function mint(uint256 tokenId) public onlyOwnerOrManager mintPerAddressNotExceed() whenNotPaused nonReentrant{
+    function mint(string memory _uuid, uint256 _tokenId, string memory _tokenURI) public onlyOwnerOrManager mintPerAddressNotExceed() whenNotPaused nonReentrant{
         require(publicSaleLive, "Sale Not Active"); // Sale should be active
         require(publicTokenMinted < (MAX_SUPPLY - RESERVE_MAX), "Minting would exceed max public supply"); // Total Minted should not exceed Max public Supply
         require(totalSupply < MAX_SUPPLY, "Minting would exceed max supply"); // Total Minted should not exceed Max Supply
         
-        _safeMint(treasuryAddress, tokenId);
+        _safeMint(treasuryAddress, _tokenId);
+        _tokenURIs[_tokenId] = _tokenURI;
         publicTokenMinted++;
         totalSupply++;
-        emit PublicSaleMinted(msg.sender, treasuryAddress, tokenId);
+        emit PublicSaleMinted(msg.sender, treasuryAddress, _uuid, _tokenId);
     }
 
-    function mintTo(address user, uint256 tokenId) public onlyOwnerOrManager mintPerAddressNotExceed() whenNotPaused nonReentrant{
+    function mintTo(address user, string memory _uuid, uint256 _tokenId, string memory _tokenURI) public onlyOwnerOrManager mintPerAddressNotExceed() whenNotPaused nonReentrant{
         require(publicSaleLive, "Sale Not Active"); // Sale should be active
         require(publicTokenMinted < (MAX_SUPPLY - RESERVE_MAX), "Minting would exceed max public supply"); // Total Minted should not exceed Max public Supply
         require(totalSupply < MAX_SUPPLY, "Minting would exceed max supply"); // Total Minted should not exceed Max Supply
         
-        _safeMint(user, tokenId);
+        _safeMint(user, _tokenId);
+        _tokenURIs[_tokenId] = _tokenURI;
         publicTokenMinted++;
         totalSupply++;
-        emit PublicSaleMinted(msg.sender, user, tokenId);
+        emit PublicSaleMinted(msg.sender, user, _uuid, _tokenId);
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC2981)
