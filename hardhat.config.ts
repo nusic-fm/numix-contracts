@@ -78,7 +78,7 @@ const config: HardhatUserConfig = {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     //apiKey: process.env.MAINNET_ETHERSCAN_API_KEY
-    //apiKey: process.env.POLYSCAN_API_KEY
+    apiKey: process.env.POLYSCAN_API_KEY
     //apiKey: process.env.MOONRIVER_ETHERSCAN_API_KEY
   },
   mocha: {

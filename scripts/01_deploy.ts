@@ -7,7 +7,7 @@ async function main() {
   console.log("Network = ",network.name);
 
   const NusicClips:NusicClips__factory = await ethers.getContractFactory("NusicClips");
-  const nusicClips:NusicClips = await NusicClips.deploy("Clips1","NC1");
+  const nusicClips:NusicClips = await NusicClips.deploy("MmmCherry - Goddess","GODDESS");
   await nusicClips.deployed();
 
   console.log("NusicClips deployed to:", nusicClips.address);
