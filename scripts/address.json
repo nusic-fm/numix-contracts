@@ -1,0 +1,11 @@
+{
+    "localhost": {
+        "nusicClips":"0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    },
+    "mumbai": {
+        "nusicClips":"0xeC67BFE1EcE48DfDD43fF3E2b037147AfF004c57"
+    },
+    "mainnet": {
+        "npausicClips":""
+    }
+}
