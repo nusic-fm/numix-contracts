@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Numix is ERC20, ERC20Pausable, Ownable {
+contract Numix is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
 
     address public manager;
 
@@ -34,7 +34,6 @@ contract Numix is ERC20, ERC20Pausable, Ownable {
     function mint(address to, uint256 amount) public onlyOwnerOrManager {
         _mint(to, amount);
     }
-
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override(ERC20, ERC20Pausable) {
         super._beforeTokenTransfer(from, to, amount);
