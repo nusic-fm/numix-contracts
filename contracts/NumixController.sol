@@ -80,6 +80,18 @@ contract NumixController is Ownable {
         transactionIndex++;
     }
 
+    // amount will be in 18 decimal points
+    // in progress >>>>>.
+    function burnTokens(address account, uint256 amount) public onlyOwnerOrManager{
+        //require(_tokensMinted > 0, "Zero Tokens");
+        //require(_users.length == _userShares.length, "User and Shares list mismatch");
+        require(numixAddress != address(0), "Numix address is null");
+
+        Numix numix = Numix(numixAddress);
+        numix.burnFrom(account, amount);
+
+    }
+
     function updateNumixAddress(address _numixAddress) public onlyOwnerOrManager {
         numixAddress = _numixAddress;
     }
