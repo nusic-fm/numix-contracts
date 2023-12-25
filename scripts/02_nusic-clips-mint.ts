@@ -12,7 +12,7 @@ async function main() {
 
   console.log("NusicClips Address:", nusicClips.address);
 
-  const txt = await nusicClips.mint("1",1,"https://bafybeifq35avyqny5kjrifwmiyf5zwqapzkxepgwpgyszlwuoqpcawnvye.ipfs.w3s.link/test-metadata.json");
+  const txt = await nusicClips.mint("1","https://bafybeifq35avyqny5kjrifwmiyf5zwqapzkxepgwpgyszlwuoqpcawnvye.ipfs.w3s.link/test-metadata.json");
   console.log("txt.hash = ",txt.hash);
   const receipt = await txt.wait();
   console.log("receipt = ",receipt);
