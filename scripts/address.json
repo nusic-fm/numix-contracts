@@ -1,11 +1,17 @@
 {
     "localhost": {
-        "nusicClips":"0x5FbDB2315678afecb367f032d93F642f64180aa3"
+        "nusicClips":"0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "numix": "0x7eb4045Ef2f8E6235BfE905C71888DEAB60ce271",
+        "numixController":"0x55584FD05ADff8B1e4bfcb452729C17ea7189f57"
     },
     "mumbai": {
-        "nusicClips":"0xeC67BFE1EcE48DfDD43fF3E2b037147AfF004c57"
+        "nusicClips":"0xeC67BFE1EcE48DfDD43fF3E2b037147AfF004c57",
+        "numix": "0x7eb4045Ef2f8E6235BfE905C71888DEAB60ce271",
+        "numixController":"0x55584FD05ADff8B1e4bfcb452729C17ea7189f57"
     },
     "mainnet": {
-        "npausicClips":""
+        "npausicClips":"",
+        "numix": "",
+        "numixController":""
     }
 }
